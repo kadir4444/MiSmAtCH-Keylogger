@@ -3,7 +3,9 @@ import datetime
 import time
 
 import keyboard
+import pyautogui
 import pygame
+import win32com.client as comctl
 from exceptiongroup import catch
 
 # Press Shift+F10 to execute it or replace it with your code.
@@ -19,8 +21,7 @@ from exceptiongroup import catch
 if __name__ == '__main__':
 
     # Time counter value
-    addedTime = 30
-
+    addedTime = 5
     # Get Current time
     my_init_time = datetime.datetime.now()
     print("Time and Date right Now: " + str(my_init_time))
@@ -53,19 +54,83 @@ if __name__ == '__main__':
     # Array used to store keys clicked
     keyed_input = []
 
-    # Initiates keyboard listener, it then records keys until exit criteria is met
-    rec_mode = keyboard.record(until=exit_key)
-
     # An alternative way to exit keyboard listener via Event Method
     # keyboard.wait('esc')
 
     # pygame.init()
 
-
-
     # pygame.K_ESCAPE:
-    print("Escape")
+    #keyboard.write('A', delay=1A)
+    # pyautogui.press('escape')
+    # pyautogui.write('escape')
+    # pyautogui.press("alt")
+    # pyautogui.keyDown("escA")
+    # wsh = comctl.Dispatch("WScript.Shell")
+    #
+    # wsh.AppActivate("icanhazip.com")
+    # wsh.SendKeys("{escape}")
 
+    print('New: ' + str(new_time))
+
+    CONST_TIME_NOW = datetime.datetime.now()
+    CONST_TIME_FUTURE = CONST_TIME_NOW + time_change
+
+    '''
+    print("New timeo: ")
+    print(CONST_TIME_FUTURE.isoformat(timespec="seconds"))
+    print("Now timeo: ")
+    print(CONST_TIME_NOW.isoformat(timespec="seconds"))
+    '''
+
+    # while datetime.datetime.now().isoformat(timespec="seconds") != CONST_TIME_FUTURE.isoformat(timespec="seconds"):
+    # Initiates keyboard listener, it then records keys until exit criteria is met
+    # rec_mode = keyboard.record(until='esc')
+    # keyboard.wait()
+
+    rc = ''
+    if rc != '':
+        print("Ello")
+    else:
+        print("sa")
+        rc = keyboard.read_key()
+
+    rc = keyboard.read_key()
+    keyed_input.append(rc)
+    print(rc)
+
+    # Prints out the elements in the keyed_inputs arrays horizontally
+    j = 0
+    while j < len(keyed_input):
+        print(keyed_input[j])
+        j += 1
+
+    print("Array: " + str(keyed_input))
+
+
+    keyboard.stop_recording()
+    print("Array2: " + str(keyed_input))
+
+
+
+    # d = keyboard.on_press_key('esc', 'esc', )
+
+    # print("not yet")
+    # print(datetime.datetime.now().isoformat(timespec="seconds"))
+    # time.sleep(10)
+
+    print("yay it's time")
+    #keyboard.wait()
+
+    '''
+    while my_init_time == new_time:
+        print("Not Yet")
+        print('Now: ' + str(datetime.datetime.now()))
+        time.sleep(10)
+    '''
+
+    print("Done")
+
+    print("Escape")
 
     # keyboard._keyboard_event.KEY_DOWN('esc')
 
@@ -73,18 +138,11 @@ if __name__ == '__main__':
     print("KeyLogger Closed.")
 
     # Displays the keys clicked in long format
-    print("Keys Entered: " + str(rec_mode))
+    #print("Keys Entered: " + str(rec_mode))
 
     # Records the keyboard inputs into the keyed_input array
-    for k in rec_mode:
-        keyed_input.append(k.name)
-
-    '''
-    for keys in rec_mode:
-        while not exit:
-            keyed_input.append(keys.name)
-    print(rec_mode)
-    '''
+    # for k in rec_mode:
+    #    keyed_input.append(k.name)
 
     # Prints out the elements in the keyed_inputs arrays
     print(keyed_input)
